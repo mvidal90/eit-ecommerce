@@ -1,0 +1,17 @@
+.navbar__container {
+    align-items: center;
+    background-color: $secondary-color;
+    display: flex;
+    height: $navbar-height;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    a {
+        font-size: $font-size-lg;
+        text-decoration: none;
+        color: $typography-color;
+        &:hover {
+            color: $typography-link-hover;
+        }
+    }
+}
