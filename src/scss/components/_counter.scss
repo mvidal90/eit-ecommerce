@@ -1,0 +1,24 @@
+
+.counter__container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    .counter__count-text {
+        margin: 0 2rem;
+        font-size: 2rem;
+    }
+      
+    .counter__btn {
+        font-size: 1.5rem;
+        padding: 0.25rem 3rem;
+        background-color: rgb(46, 85, 72);
+        color: white;
+        border: 2px solid white;
+        border-radius: 2rem;
+        &:disabled {
+            background-color: rgb(88, 104, 99);
+        }
+    }
+      
+}
+  

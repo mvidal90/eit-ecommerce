@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Career Girls",
+    "director": "Mike Leigh",
+    "genre": "Drama",
+    "year": 1997,
+    "duration": 83,
+    "isAwared": false,
+    "rating": 7.1
+  },
+  {
+    "id": 2,
+    "title": "Our Idiot Brother",
+    "director": "Jesse Peretz",
+    "genre": "Comedia",
+    "year": 2011,
+    "duration": 90,
+    "isAwared": true,
+    "rating": 6.4
+  },
+  {
+    "id": 3,
+    "title": "Liebestraum",
+    "director": "Mike Figgis",
+    "genre": "Horror",
+    "year": 1991,
+    "duration": 112,
+    "isAwared": true,
+    "rating": 6
+  },
+  {
+    "id": 4,
+    "title": "Summer and Smoke",
+    "director": "Peter Glenville",
+    "genre": "Drama",
+    "year": 1961,
+    "duration": 118,
+    "isAwared": true,
+    "rating": 6.9
+  },
+  {
+    "id": 5,
+    "title": "Axed",
+    "director": "Ryan Lee Driscoll",
+    "genre": "Thriller",
+    "year": 2012,
+    "duration": 84,
+    "isAwared": false,
+    "rating": 3.7
+  },
+  {
+    "id": 6,
+    "title": "The Mist",
+    "director": "Frank Darabont",
+    "genre": "Sci-Fi",
+    "year": 2007,
+    "duration": 126,
+    "isAwared": true,
+    "rating": 7.1
+  },
+  {
+    "id": 7,
+    "title": "Tom and Huck",
+    "director": "Peter Hewitt",
+    "genre": "Aventura",
+    "year": 1995,
+    "duration": 97,
+    "isAwared": false,
+    "rating": 5.5
+  },
+  {
+    "id": 8,
+    "title": "The Lord of the Rings: The Return of the King",
+    "director": "Peter Jackson",
+    "genre": "Aventura",
+    "year": 2003,
+    "duration": 401,
+    "isAwared": true,
+    "rating": 8.9
+  },
+  {
+    "id": 9,
+    "title": "Doctor Strange",
+    "director": "Scott Derrickson",
+    "genre": "Accion",
+    "year": 2016,
+    "duration": 115,
+    "isAwared": true,
+    "rating": 7.5
+  },
+  {
+    "id": 10,
+    "title": "The Last Lovecraft: Relic of Cthulhu",
+    "director": "Henry Saine",
+    "genre": "Horror",
+    "year": 2009,
+    "duration": 78,
+    "isAwared": false,
+    "rating": 5.6
+  }
+]

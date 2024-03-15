@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <header className="navbar__container">
             <nav>
-                <Link to="/">Home</Link>
+                <Link to="/">VideoClub</Link>
             </nav>
             <div>
                 <Cart />
