@@ -1,8 +1,8 @@
-import MoviesWrapper from "../components/MoviesWrapper";
+import ProductsWrapper from "../components/ProductsWrapper";
 
 function Home() {
     return (
-        <MoviesWrapper />
+        <ProductsWrapper />
     )
 }
 

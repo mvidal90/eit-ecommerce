@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 6%;
     width: 100%;
     .card__container {
         background-color: $white;
@@ -11,10 +12,15 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin: 0.5rem;
-        padding: 1rem;
+        margin: 1rem;
         text-align: start;
-        width: 25%;
+        width: 20%;
+        .card__data {
+            padding: 1rem;
+        }
+        img {
+            width: 100%;
+        }
         h2 {
             padding-top: 0;
         }
