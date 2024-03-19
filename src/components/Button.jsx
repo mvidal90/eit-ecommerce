@@ -1,7 +1,9 @@
 import React from 'react'
+import Icon from './Icon'
 
 export default function Button({
     label,
+    icon = "",
     action = () => {},
     className,
     type = "button",
@@ -14,6 +16,7 @@ export default function Button({
         onClick={action}
         disabled={disabled}
     >
+        {icon ? <Icon icon={icon} />  : undefined}
         {label}
     </button>
   )

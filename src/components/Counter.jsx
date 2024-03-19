@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import Text from './Text'
 import Button from './Button'
 import { CartContext } from '../context/CartContext';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const INITIAL_STATE = 0;
 
@@ -25,7 +26,7 @@ export default function Counter({id}) {
         <>
             <div className="counter__container">
                 <Button 
-                    label="Resta"
+                    icon={faMinus}
                     className="counter__btn"
                     action={decrement}
                     disabled={count === 0}
@@ -36,7 +37,7 @@ export default function Counter({id}) {
                     componentsProps={{ className: "counter__count-text" }}
                 />
                 <Button 
-                    label="Suma"
+                    icon={faPlus}
                     className="counter__btn"
                     action={increment}
                 />
