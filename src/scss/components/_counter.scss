@@ -10,7 +10,7 @@
     }
       
     .counter__btn {
-        background-color: $terciary-color;
+        background-color: darken($color:$terciary-color, $amount: 20);
         border: 2px solid $white;
         border-radius: 0.5rem;
         color: $white;
@@ -18,9 +18,8 @@
         height: 2rem;
         padding: 0.25rem;
         width: 2rem;
-
         &:disabled {
-            background-color: darken($color:$terciary-color, $amount: 20);
+            background-color: $terciary-color;
         }
         &:hover:not([disabled]) {
             background-color: $terciary-hover;
