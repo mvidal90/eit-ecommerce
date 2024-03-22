@@ -1,15 +1,32 @@
 .navbar__container {
-    align-items: center;
     background-color: $secondary-color;
-    display: flex;
     height: $navbar-height;
-    justify-content: space-between;
-    padding: 0 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    .navbar__wrapper{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        margin: 0 10%;
+        nav {
+            display: flex;
+            align-items: center;
+        }
+    }
 
     a {
-        font-size: $font-size-lg;
+        font-size: $font-size-md;
         text-decoration: none;
         color: $typography-color;
+        padding-right: 1rem;
+        &:first-child {
+            h1 {
+                font-size: $font-size-lg;
+                font-weight: 200;
+            }
+        }
         &:hover {
             color: $typography-link-hover;
         }

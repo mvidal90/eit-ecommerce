@@ -4,11 +4,14 @@ import Cart from "../components/Cart"
 function NavBar() {
     return (
         <header className="navbar__container">
-            <nav>
-                <Link to="/">VideoClub</Link>
-            </nav>
-            <div>
-                <Cart />
+            <div className="navbar__wrapper">
+                <nav>
+                    <Link to="/"><h1>Tienda online</h1></Link>
+                    <Link to="/contact">Contactanos</Link>
+                </nav>
+                <div>
+                    <Cart />
+                </div>
             </div>
         </header>
     )
