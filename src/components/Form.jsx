@@ -1,23 +1,24 @@
 import React from 'react'
-import { useForm } from '../hooks/useForm';
+import Button from './Button';
 
-function Form() {
-    const {values, handleInputChange} = useForm({
-        name: ""
-    })
-
+function Form({children, onSubmit, labelButton, loading}) {
     return (
-        <form onSubmit={
-            e => {
-                e.preventDefault();
-                console.log(values)
+        <form 
+            onSubmit={
+                e => {
+                    e.preventDefault();
+                    onSubmit()
+                }
             }
-        }>
-            <input 
-                type="text" 
-                name="name" 
-                value={values.name}
-                onChange={handleInputChange} />
+            className="form__container"
+        >
+            {children}
+            <Button 
+                type='submit' 
+                label={loading ? "Enviando..." : labelButton} 
+                className={"form__button-submit"}
+                disabled={loading}
+                />
         </form>
     )
 }
