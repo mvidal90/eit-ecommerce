@@ -1,4 +1,5 @@
 import React from 'react'
+import { bool, element } from 'prop-types'
 
 function Modal({children, show}) {
     return (
@@ -10,6 +11,15 @@ function Modal({children, show}) {
             </div>
         ) : undefined
     )
+}
+
+Modal.PropTypes = {
+    children: element.isRequired,
+    show: bool
+}
+
+Modal.defaultProps = {
+    show: false
 }
 
 export default Modal
