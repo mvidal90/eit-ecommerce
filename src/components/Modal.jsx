@@ -13,7 +13,7 @@ function Modal({children, show}) {
     )
 }
 
-Modal.PropTypes = {
+Modal.propTypes = {
     children: element.isRequired,
     show: bool
 }
