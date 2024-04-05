@@ -5,6 +5,7 @@ import { CartContext } from "../context/CartContext"
 
 import Button from "./Button";
 import Modal from "./Modal";
+import CartItem from "./CartItem";
 
 function Cart() {
     const { moviesCartList } = useContext(CartContext);
@@ -32,7 +33,7 @@ function Cart() {
                     : undefined 
                 }
             </div>
-            <Modal show={open}>
+            <Modal show={open} onClose={()=>setOpen(false)}>
                 <div className="modal__header">
                     <Button
                         icon={faClose}
@@ -40,6 +41,15 @@ function Cart() {
                         action={() => setOpen(!open)}
                     />
                 </div>
+                {
+                    moviesCartList.map(
+                        data =>
+                            <CartItem
+                                key={data.id}
+                                {...data}
+                            />
+                    )
+                }
             </Modal>
         </>
     )

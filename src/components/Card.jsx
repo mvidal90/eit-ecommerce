@@ -11,7 +11,6 @@ function Card({
     delivery,
 }) {
     return (
-        // <Link to={`/movies/detail/${id}`} as="div" className="card__container">
         <div className="card__container">
             <img src={img} alt={shortDesc} />
             <div className='card__data'>
@@ -20,9 +19,15 @@ function Card({
                 <p>{shortDesc}</p>
                 {delivery ? <p>Envío sin cargo.</p> : undefined}
             </div>
-            <Counter id={id}/>
+            <Counter 
+                id={id}
+                movieData={{
+                    name,
+                    img,
+                    category,
+                    brand,
+                }}/>
         </div>
-        // </Link>
     )
 }
 

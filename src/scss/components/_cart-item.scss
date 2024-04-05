@@ -1,0 +1,12 @@
+
+.cart-item__container {
+    min-height: 3rem;
+    border-bottom: 1px solid $primary-color;
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+        font-size: $font-size-lg;
+    }
+}
