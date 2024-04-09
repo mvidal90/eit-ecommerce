@@ -34,22 +34,24 @@ function Cart() {
                 }
             </div>
             <Modal show={open} onClose={()=>setOpen(false)}>
-                <div className="modal__header">
-                    <Button
-                        icon={faClose}
-                        className="modal__close"
-                        action={() => setOpen(!open)}
-                    />
-                </div>
-                {
-                    moviesCartList.map(
-                        data =>
-                            <CartItem
-                                key={data.id}
-                                {...data}
-                            />
-                    )
-                }
+                <>
+                    <div className="modal__header">
+                        <Button
+                            icon={faClose}
+                            className="modal__close"
+                            action={() => setOpen(!open)}
+                        />
+                    </div>
+                    {
+                        moviesCartList.map(
+                            data =>
+                                <CartItem
+                                    key={data.id}
+                                    {...data}
+                                />
+                        )
+                    }
+                </>
             </Modal>
         </>
     )
