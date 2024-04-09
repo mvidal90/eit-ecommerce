@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function InputGroup({
     id,
     inputLabel,
     inputType = "text",
-    onChange,
+    onChange = () => {},
+    validation = () => "",
     values
 }) {
+
+    const [error, setError] = useState("")
+
+    const validatedOnChange = e => {
+        onChange(e)
+        setError(validation(e.target.value))
+    }
+
     return (
-        <div className='input-group__container'>
+        <div className={`input-group__container${ inputType === "checkbox" ? " input-group__checkbox" : ""}`}>
             <label htmlFor={id}>{inputLabel}</label>
             {
                 inputType === "textarea" ?
@@ -16,19 +25,20 @@ function InputGroup({
                         id={id} 
                         name={id} 
                         type={inputType}
-                        onChange={onChange}
+                        onChange={validatedOnChange}
                         value={values[id]}
-                        className='input-group__input'
+                        className={`input-group__input${error ? " error" : ""}`}
                     ></textarea>
                 :
                     <input 
                         id={id} 
                         name={id} 
                         type={inputType}
-                        onChange={onChange}
-                        value={values[id]}
-                        className='input-group__input' />
+                        onChange={validatedOnChange}
+                        value={inputType !== "file" ? values[id] : ""}
+                        className={`input-group__input${error ? " error" : ""}`} />
             }
+            <span className='input-group__text-error'>{error}</span>
         </div>
     )
 }

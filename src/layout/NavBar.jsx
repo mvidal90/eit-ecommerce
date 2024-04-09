@@ -7,6 +7,7 @@ function NavBar() {
             <div className="navbar__wrapper">
                 <nav>
                     <Link to="/"><h1>Tienda online</h1></Link>
+                    <Link to="/upload">Alta</Link>
                     <Link to="/contact">Contactanos</Link>
                 </nav>
                 <div>
