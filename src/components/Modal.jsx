@@ -19,12 +19,12 @@ function Modal({children, show, onClose}) {
 
     return (
         show ? (
-            <div className='modal__overlay'>
+            <div className='modal__overlay' onClick={onClose} >
                 <div
                     ref={modalRef} 
                     className='modal__container' 
                     tabIndex="0"
-                    // onBlur={onClose}
+                    onClick={e => e.stopPropagation()}
                     onKeyDown={handleKeyPress}>
                     {children}
                 </div>
