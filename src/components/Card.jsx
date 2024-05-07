@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function Card({
     id,
     name,
-    img,
+    imgUrl,
     category,
     brand,
     shortDesc,
@@ -14,7 +14,7 @@ function Card({
     return (
         <div className="card__container">
             <Link to={`/detail/${id}`} >
-                <img src={img} alt={shortDesc} />
+                <img src={imgUrl} alt={shortDesc} />
                 <div className='card__data'>
                     <h2>{name} <span>({brand})</span></h2>
                     <b>{category}</b>
@@ -26,7 +26,7 @@ function Card({
                 id={id}
                 movieData={{
                     name,
-                    img,
+                    imgUrl,
                     category,
                     brand,
                 }}/>
