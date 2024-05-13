@@ -3,7 +3,7 @@ import Counter from './Counter'
 import { Link } from 'react-router-dom'
 
 function Card({
-    id,
+    _id,
     name,
     imgUrl,
     category,
@@ -13,7 +13,7 @@ function Card({
 }) {
     return (
         <div className="card__container">
-            <Link to={`/detail/${id}`} >
+            <Link to={`/detail/${_id}`} >
                 <img src={imgUrl} alt={shortDesc} />
                 <div className='card__data'>
                     <h2>{name} <span>({brand})</span></h2>
@@ -23,7 +23,7 @@ function Card({
                 </div>
             </Link>
             <Counter 
-                id={id}
+                _id={_id}
                 movieData={{
                     name,
                     imgUrl,

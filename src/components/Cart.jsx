@@ -46,7 +46,7 @@ function Cart() {
                         moviesCartList.map(
                             data =>
                                 <CartItem
-                                    key={data.id}
+                                    key={data._id}
                                     {...data}
                                 />
                         )

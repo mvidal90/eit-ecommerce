@@ -5,11 +5,11 @@ function CartProvider({children}) {
     const [moviesCartList, setMoviesCartList] = useState([])
     
     const addMovie = data => {
-        const movieFinded = moviesCartList.find(movie => movie.id === data.id)
+        const movieFinded = moviesCartList.find(movie => movie._id === data._id)
         if (movieFinded) {
             setMoviesCartList(
                 moviesCartList.map(
-                    movie => movie.id === data.id ? data : movie
+                    movie => movie._id === data._id ? data : movie
                 )
             )
         } else {
@@ -18,18 +18,18 @@ function CartProvider({children}) {
     }
 
     const removeMovie = id => {
-        const movieFinded = moviesCartList.find(movie => movie.id === id)
+        const movieFinded = moviesCartList.find(movie => movie._id === id)
         if (movieFinded?.quantity > 1) {
             setMoviesCartList(
                 moviesCartList.map(
-                    movie => movie.id === id ? {
+                    movie => movie._id === id ? {
                         ...movie,
                         quantity: movie.quantity -1
                     } : movie
                 )
             )
         } else {
-            setMoviesCartList(moviesCartList.filter( movie => movie.id !== id ))
+            setMoviesCartList(moviesCartList.filter( movie => movie._id !== id ))
         }
     }
 

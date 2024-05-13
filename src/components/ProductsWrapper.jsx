@@ -23,7 +23,7 @@ function ProductsWrapper() {
                     products.map(
                         product =>
                             <Card 
-                                key={product.id}
+                                key={product._id}
                                 {...product}
                             />
                     )
