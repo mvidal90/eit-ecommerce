@@ -2,26 +2,26 @@ import React, { useState } from 'react'
 import { CartContext } from './CartContext'
 
 function CartProvider({children}) {
-    const [moviesCartList, setMoviesCartList] = useState([])
+    const [productsCartList, setProductsCartList] = useState([])
     
     const addMovie = data => {
-        const movieFinded = moviesCartList.find(movie => movie._id === data._id)
+        const movieFinded = productsCartList.find(movie => movie._id === data._id)
         if (movieFinded) {
-            setMoviesCartList(
-                moviesCartList.map(
+            setProductsCartList(
+                productsCartList.map(
                     movie => movie._id === data._id ? data : movie
                 )
             )
         } else {
-            setMoviesCartList([...moviesCartList, data])
+            setProductsCartList([...productsCartList, data])
         }
     }
 
     const removeMovie = id => {
-        const movieFinded = moviesCartList.find(movie => movie._id === id)
+        const movieFinded = productsCartList.find(movie => movie._id === id)
         if (movieFinded?.quantity > 1) {
-            setMoviesCartList(
-                moviesCartList.map(
+            setProductsCartList(
+                productsCartList.map(
                     movie => movie._id === id ? {
                         ...movie,
                         quantity: movie.quantity -1
@@ -29,13 +29,13 @@ function CartProvider({children}) {
                 )
             )
         } else {
-            setMoviesCartList(moviesCartList.filter( movie => movie._id !== id ))
+            setProductsCartList(productsCartList.filter( movie => movie._id !== id ))
         }
     }
 
     return (
         <CartContext.Provider value={{
-            moviesCartList,
+            productsCartList,
             addMovie,
             removeMovie
         }}>

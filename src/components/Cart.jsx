@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import CartItem from "./CartItem";
 
 function Cart() {
-    const { moviesCartList } = useContext(CartContext);
+    const { productsCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false)
 
     return (
@@ -18,13 +18,13 @@ function Cart() {
                     icon={faShoppingCart}
                     className="cart__navbar-button"
                     action={() => setOpen(!open)}
-                    disabled={!moviesCartList.length}
+                    disabled={!productsCartList.length}
                 />
                 {
-                    moviesCartList.length ?
+                    productsCartList.length ?
                         <div className="cart__badge">
                             <span>
-                                {moviesCartList.reduce(
+                                {productsCartList.reduce(
                                     (acc, movie) => acc + movie.quantity,
                                     0
                                 )}
@@ -43,7 +43,7 @@ function Cart() {
                         />
                     </div>
                     {
-                        moviesCartList.map(
+                        productsCartList.map(
                             data =>
                                 <CartItem
                                     key={data._id}
