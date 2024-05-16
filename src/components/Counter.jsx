@@ -8,12 +8,12 @@ import Button from './Button'
 
 export default function Counter({_id, movieData, initialValue = 0}) {
     const [count, setCount] = useState(initialValue)
-    const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
+    const { addMovie, removeMovie, productsCartList } = useContext(CartContext);
 
     useEffect(() => {
-        const movie = moviesCartList.find( movie => movie._id === _id)
+        const movie = productsCartList.find( movie => movie._id === _id)
         setCount(movie?.quantity || 0)
-    }, [moviesCartList])
+    }, [productsCartList, _id])
 
     const decrement = e => {
         e.stopPropagation()
