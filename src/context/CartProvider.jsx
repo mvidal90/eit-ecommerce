@@ -1,43 +1,64 @@
 import React, { useState } from 'react'
 import { CartContext } from './CartContext'
+import { editCart, postCart } from '../util/api'
 
 function CartProvider({children}) {
+    const [idCart, setIdCart] = useState(null)
     const [productsCartList, setProductsCartList] = useState([])
     
-    const addMovie = data => {
-        const movieFinded = productsCartList.find(movie => movie._id === data._id)
-        if (movieFinded) {
-            setProductsCartList(
-                productsCartList.map(
-                    movie => movie._id === data._id ? data : movie
-                )
+    const addProd = ({_id, quantity}) => {
+        const data = {
+            quantity,
+            product: _id
+        }
+        const prodFinded = productsCartList.find(prod => prod.product?._id === _id)
+
+        if (prodFinded) {
+            const newCart = productsCartList.map(
+                prod => prod.product?._id === data.product ? data : prod
             )
+            editCart(idCart, newCart)
+                .then(({cart}) => setProductsCartList(cart.items))
         } else {
-            setProductsCartList([...productsCartList, data])
+            if (!idCart) {
+                postCart([data])
+                    .then(({cart}) => {
+                        setIdCart(cart._id)
+                        setProductsCartList(cart.items)
+                    })
+            } else {
+                const newCart = [...productsCartList, data]
+                editCart(idCart, newCart)
+                        .then(({cart}) => setProductsCartList(cart.items))
+            }
         }
     }
 
-    const removeMovie = id => {
-        const movieFinded = productsCartList.find(movie => movie._id === id)
-        if (movieFinded?.quantity > 1) {
-            setProductsCartList(
-                productsCartList.map(
-                    movie => movie._id === id ? {
-                        ...movie,
-                        quantity: movie.quantity -1
-                    } : movie
+    const removeProd = id => {
+        const prodFinded = productsCartList.find(prod => prod._id === id)
+        if (idCart) {
+            if (prodFinded?.quantity > 1) {
+                const newCart = productsCartList.map(
+                    prod => prod.product._id === id ? {
+                        ...prod,
+                        quantity: prod.quantity -1
+                    } : prod
                 )
-            )
-        } else {
-            setProductsCartList(productsCartList.filter( movie => movie._id !== id ))
+                editCart(idCart, newCart)
+                        .then(({cart}) => setProductsCartList(cart.items))
+            } else {
+                const newCart = productsCartList.filter( prod => prod._id !== id )
+                editCart(idCart, newCart)
+                        .then(({cart}) => setProductsCartList(cart.items))
+            }
         }
     }
 
     return (
         <CartContext.Provider value={{
             productsCartList,
-            addMovie,
-            removeMovie
+            addProd,
+            removeProd
         }}>
             {children}
         </CartContext.Provider>

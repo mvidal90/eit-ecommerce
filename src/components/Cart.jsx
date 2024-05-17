@@ -10,7 +10,7 @@ import CartItem from "./CartItem";
 function Cart() {
     const { productsCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false)
-
+    
     return (
         <>
             <div className="cart__container">
@@ -46,8 +46,8 @@ function Cart() {
                         productsCartList.map(
                             data =>
                                 <CartItem
-                                    key={data._id}
-                                    {...data}
+                                    key={data.product._id}
+                                    {...data.product}
                                 />
                         )
                     }
