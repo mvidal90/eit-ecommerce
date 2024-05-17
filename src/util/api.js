@@ -38,6 +38,6 @@ export const editCart = async (id, body) => {
 } 
 
 export const getCart = async id => {
-    const resp = await axiosInstance.put(`/cart/get/${id}`)
+    const resp = await axiosInstance.get(`/cart/get/${id}`)
     return resp.data;
 } 

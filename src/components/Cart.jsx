@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { faClose, faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import { faClose, faDollar, faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 
 import { CartContext } from "../context/CartContext"
 
@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import CartItem from "./CartItem";
 
 function Cart() {
-    const { productsCartList } = useContext(CartContext);
+    const { productsCartList, resetCart } = useContext(CartContext);
     const [open, setOpen] = useState(false)
     
     return (
@@ -47,10 +47,21 @@ function Cart() {
                             data =>
                                 <CartItem
                                     key={data.product._id}
-                                    {...data.product}
+                                    {...data}
                                 />
                         )
                     }
+                    <div className="modal__footer">
+                        <Button
+                            icon={faDollar}
+                            className="modal__btn-buy"
+                            label="Comprar"
+                            action={() => {
+                                resetCart()
+                                setOpen(!open)
+                            }}
+                        />
+                    </div>
                 </>
             </Modal>
         </>

@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CartContext } from './CartContext'
-import { editCart, postCart } from '../util/api'
+import { editCart, getCart, postCart } from '../util/api'
 
 function CartProvider({children}) {
     const [idCart, setIdCart] = useState(null)
     const [productsCartList, setProductsCartList] = useState([])
+
+    useEffect(() => {
+        const storedIdCart = localStorage.getItem("cartId")
+        if (storedIdCart) {
+            getCart(storedIdCart)
+                .then(({cart}) => {
+                    setProductsCartList(cart.items)
+                    setIdCart(storedIdCart)
+                })
+        }
+    }, [])
     
     const addProd = ({_id, quantity}) => {
         const data = {
@@ -23,6 +34,7 @@ function CartProvider({children}) {
             if (!idCart) {
                 postCart([data])
                     .then(({cart}) => {
+                        localStorage.setItem("cartId", cart._id)
                         setIdCart(cart._id)
                         setProductsCartList(cart.items)
                     })
@@ -35,7 +47,7 @@ function CartProvider({children}) {
     }
 
     const removeProd = id => {
-        const prodFinded = productsCartList.find(prod => prod._id === id)
+        const prodFinded = productsCartList.find(prod => prod.product?._id === id)
         if (idCart) {
             if (prodFinded?.quantity > 1) {
                 const newCart = productsCartList.map(
@@ -47,18 +59,24 @@ function CartProvider({children}) {
                 editCart(idCart, newCart)
                         .then(({cart}) => setProductsCartList(cart.items))
             } else {
-                const newCart = productsCartList.filter( prod => prod._id !== id )
+                const newCart = productsCartList.filter( prod => prod.product?._id !== id )
                 editCart(idCart, newCart)
                         .then(({cart}) => setProductsCartList(cart.items))
             }
         }
     }
 
+    const resetCart = () => {
+        setIdCart(null)
+        localStorage.removeItem("cartId")
+        setProductsCartList([])
+    }
     return (
         <CartContext.Provider value={{
             productsCartList,
             addProd,
-            removeProd
+            removeProd,
+            resetCart
         }}>
             {children}
         </CartContext.Provider>
