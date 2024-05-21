@@ -7,6 +7,7 @@ import Home from "../pages/Home"
 import Contact from "../pages/Contact"
 import Detail from "../pages/Detail"
 import Upload from "../pages/Upload"
+import Checkout from "../pages/Checkout"
 
 function RouterApp() {
     return (
@@ -17,6 +18,7 @@ function RouterApp() {
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/upload" element={<Upload />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Footer />
         </BrowserRouter>

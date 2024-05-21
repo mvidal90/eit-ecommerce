@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { faClose, faDollar, faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../context/CartContext"
 
@@ -9,6 +10,7 @@ import CartItem from "./CartItem";
 
 function Cart() {
     const { productsCartList, resetCart } = useContext(CartContext);
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     
     return (
@@ -51,13 +53,13 @@ function Cart() {
                                 />
                         )
                     }
-                    <div className="modal__footer">
+                    <div id="wallet_container" className="modal__footer">
                         <Button
                             icon={faDollar}
                             className="modal__btn-buy"
                             label="Comprar"
                             action={() => {
-                                resetCart()
+                                navigate("/checkout")
                                 setOpen(!open)
                             }}
                         />

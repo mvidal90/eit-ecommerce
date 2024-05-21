@@ -1,7 +1,7 @@
 import React from 'react'
 import Counter from './Counter'
 
-function CartItem({product, quantity}) {
+function CartItem({product, quantity, edit = true}) {
     return (
         <div className='cart-item__container'>
             <h2>
@@ -9,9 +9,13 @@ function CartItem({product, quantity}) {
                 <span>({product.brand})</span>
             </h2>
             <p>{product.category}</p>
-            <Counter 
-                _id={product._id}
-                initialValue={quantity}/>
+            {
+                edit ?
+                    <Counter 
+                        _id={product._id}
+                        initialValue={quantity}/>
+                : undefined
+            }
         </div>
     )
 }
