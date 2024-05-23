@@ -9,7 +9,7 @@ import Modal from "./Modal";
 import CartItem from "./CartItem";
 
 function Cart() {
-    const { productsCartList, resetCart } = useContext(CartContext);
+    const { productsCartList } = useContext(CartContext);
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     

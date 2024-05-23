@@ -24,7 +24,7 @@ function Checkout() {
         })
             .then( data => setPrefId(data.preferenceId))
             .catch(console.log)
-    }, [])
+    }, [productsCartList])
     
 
     return (
